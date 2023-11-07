@@ -16,4 +16,13 @@ body {
    background-image: url('../public/image/fundo.png');
    background-repeat: no-repeat;
    background-size: cover;
+   align-items: center;
+   display: flex;
+   justify-content: center;
+}
+
+*{
+   padding: 0;
+   margin: 0;
+   box-sizing: border-box;
 }
