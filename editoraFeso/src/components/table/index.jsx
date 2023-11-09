@@ -1,5 +1,6 @@
 import Button from "react-bootstrap/Button";
 import Table from "react-bootstrap/Table";
+import ModalVisualizar from "../modalVisualizar";
 
 export default function Tables() {
   return (
@@ -19,7 +20,7 @@ export default function Tables() {
           <td>10-05-23</td>
           <td>Projeto MVC</td>
           <td>
-            <Button variant="outline-primary">Visualizar</Button>{" "}
+            <ModalVisualizar />
           </td>
         </tr>
         <tr>
@@ -27,7 +28,7 @@ export default function Tables() {
           <td>10-05-23</td>
           <td>Projeto IHC</td>
           <td>
-            <Button variant="outline-primary">Visualizar</Button>{" "}
+            <ModalVisualizar />
           </td>
         </tr>
       </tbody>
