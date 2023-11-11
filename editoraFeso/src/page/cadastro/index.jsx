@@ -1,43 +1,101 @@
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-import { Link } from "react-router-dom";
+import { useState } from 'react'
+import { registerUser } from '../../api/api'
+
+// import Button from 'react-bootstrap/Button'
+// import Form from 'react-bootstrap/Form'
+// import { Link } from 'react-router-dom'
 
 export default function Cadastro() {
-  return (
-    <div className="container ">
-      <h1 className="text-light bg-dark rounded-4 fs-2 p-3">Editora Unifeso</h1>
+   const [userData, setUserData] = useState({
+      username: '',
+      password: '',
+      name: '',
+      email: ''
+   })
 
-      <Form className="container bg-secondary rounded-5 p-4">
-        <Form.Group className="mb-3 " controlId="formBasicNome">
-          <Form.Label className="text-light fs-2 d-flex align-items-start">Nome</Form.Label>
-          <Form.Control type="email" placeholder="Digite seu Nome" />
-        </Form.Group>
+   const [errorMessage, setErrorMessage] = useState(null)
 
-        <Form.Group className="mb-3 " controlId="formBasicEmail">
-          <Form.Label className="text-light fs-2 d-flex align-items-start">Email</Form.Label>
-          <Form.Control type="email" placeholder="Digite seu Email" />
-        </Form.Group>
+   const handleInputChange = e => {
+      const { name, value } = e.target
+      setUserData(prevData => ({
+         ...prevData,
+         [name]: value
+      }))
+   }
 
-        <Form.Group className="mb-3 " controlId="formBasicLogin">
-          <Form.Label className="text-light fs-2 d-flex align-items-start">Usuário</Form.Label>
-          <Form.Control type="email" placeholder="Digite seu usuário" />
-        </Form.Group>
+   const handleRegistration = async () => {
+      try {
+         const user = await registerUser(userData)
+         console.log('User registered:', user)
+         resetUserData()
+         // Lógica adicional após o registro bem-sucedido
+      } catch (error) {
+         console.error('Error during registration:', error)
+         setErrorMessage(error.error) // Exemplo: Assumindo que o servidor envia um objeto de erro com uma propriedade 'error'
+      }
+   }
 
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label className="text-light fs-2 d-flex align-items-start">Senha</Form.Label>
-          <Form.Control type="password" placeholder="Digite sua senha" />
-        </Form.Group>
-
-        <Link to="/">
-          <Button variant="warning" type="submit" className="px-4 fs-4 m-2">
-            Voltar
-          </Button>
-        </Link>
-
-        <Button variant="primary" type="submit" className="px-4 fs-4">
-          Cadastrar
-        </Button>
-      </Form>
-    </div>
-  );
+   const resetUserData = () => {
+      setUserData({
+         username: '',
+         password: '',
+         name: '',
+         email: ''
+      })
+   }
+   return (
+      <div>
+         <h2>Registro de Usuário</h2>
+         <form>
+            <label>
+               Username:
+               <input
+                  type="text"
+                  name="username"
+                  value={userData.username}
+                  onChange={handleInputChange}
+               />
+            </label>
+            <br />
+            <label>
+               Password:
+               <input
+                  type="password"
+                  name="password"
+                  value={userData.password}
+                  onChange={handleInputChange}
+               />
+            </label>
+            <br />
+            <label>
+               Name:
+               <input
+                  type="text"
+                  name="name"
+                  value={userData.name}
+                  onChange={handleInputChange}
+               />
+            </label>
+            <br />
+            <label>
+               Email:
+               <input
+                  type="email"
+                  name="email"
+                  value={userData.email}
+                  onChange={handleInputChange}
+               />
+            </label>
+            <br />
+            <button
+               type="button"
+               onClick={handleRegistration}
+               onChange={resetUserData}
+            >
+               Salvar
+            </button>
+         </form>
+         {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+      </div>
+   )
 }
