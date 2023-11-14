@@ -18,9 +18,6 @@ export default function SideBar() {
           <CDBSidebarMenuItem icon="plus-circle">
             <ModalAdicionar />
           </CDBSidebarMenuItem>
-          {/* <CDBSidebarMenuItem icon="table" iconType="solid">
-            Minhas publicações
-          </CDBSidebarMenuItem> */}
         </CDBSidebarMenu>
       </CDBSidebarContent>
 
