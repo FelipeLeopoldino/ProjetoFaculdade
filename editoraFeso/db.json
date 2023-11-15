@@ -1,5 +1,5 @@
 {
-  "cadastro": [
+  "users": [
     {
       "username": "felipeleopoldino",
       "password": "12345",
@@ -8,16 +8,18 @@
       "id": 1
     },
     {
+      "username": "user",
+      "password": "123",
+      "name": "felipe leopoldino",
+      "email": "felipeleopoldino01@icloud.com",
       "id": 2
     },
     {
+      "username": "felipepim",
+      "password": "123",
+      "name": "felipe leopoldino",
+      "email": "felipeleopoldino01@icloud.com",
       "id": 3
-    },
-    {
-      "id": 4
-    },
-    {
-      "id": 5
     }
   ]
 }
