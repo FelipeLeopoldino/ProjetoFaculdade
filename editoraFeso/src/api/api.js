@@ -11,6 +11,15 @@ export const registerUser = async userData => {
    }
 }
 
+export const registerArticle = async article => {
+   try {
+      const response = await axios.post(`${API_URL}/article`, article)
+      return response.data
+   } catch (error) {
+      throw error.response.data
+   }
+}
+
 export const loginUser = async credentials => {
    try {
       const response = await axios.post(`${API_URL}/users`, credentials)
