@@ -12,6 +12,7 @@ export default function ModalAdicionar() {
       author: ''
    })
    const [errorMessage, setErrorMessage] = useState(null)
+   const [sucessMessage, setSucessMessage] = useState(null)
    const handleClose = () => setShow(false)
    const handleShow = () => setShow(true)
 
@@ -40,6 +41,7 @@ export default function ModalAdicionar() {
          const article = await registerArticle(articleWithAuthor)
          console.log('Article registered:', article)
          resetArticleData()
+         setSucessMessage('Cadastro Realizado com sucesso')
       } catch (error) {
          console.error('Error during article:', error)
          setErrorMessage('Erro ao fazer o cadastro')
@@ -95,15 +97,14 @@ export default function ModalAdicionar() {
                   {errorMessage && (
                      <p style={{ color: 'red' }}>{errorMessage}</p>
                   )}
+                  {sucessMessage && (
+                     <p style={{ color: 'green' }}>{sucessMessage}</p>
+                  )}
                   <Modal.Footer>
                      <Button variant="secondary" onClick={handleClose}>
                         Voltar
                      </Button>
-                     <Button
-                        variant="primary"
-                        onClick={handleClose}
-                        type="submit"
-                     >
+                     <Button variant="primary" onClick={handleArticle}>
                         Salvar
                      </Button>
                   </Modal.Footer>

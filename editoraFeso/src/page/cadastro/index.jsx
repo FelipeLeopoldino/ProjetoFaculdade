@@ -12,6 +12,7 @@ export default function Cadastro() {
    })
 
    const [errorMessage, setErrorMessage] = useState(null)
+   const [SucessMessage, setSucessMessage] = useState(null)
 
    const handleInputChange = e => {
       const { name, value } = e.target
@@ -25,6 +26,8 @@ export default function Cadastro() {
       try {
          const user = await registerUser(userData)
          console.log('User registered:', user)
+         setSucessMessage('Cadastro Realizado com sucesso')
+
          resetUserData()
       } catch (error) {
          console.error('Error during registration:', error)
@@ -89,6 +92,7 @@ export default function Cadastro() {
                   required
                />
             </div>
+            {SucessMessage && <p style={{ color: 'green' }}>{SucessMessage}</p>}
             {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
 
             <div className="m-2">
@@ -98,7 +102,11 @@ export default function Cadastro() {
                      Voltar
                   </Link>
                </button>
-               <button type="submit" className="btn btn-primary">
+               <button
+                  type="button"
+                  className="btn btn-primary"
+                  onClick={handleRegistration}
+               >
                   Salvar
                </button>
             </div>

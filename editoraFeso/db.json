@@ -6,6 +6,20 @@
       "name": "Felipe Leopoldino",
       "email": "felipeleopoldino01@icloud.com",
       "id": 1
+    },
+    {
+      "username": "felipe",
+      "password": "12345",
+      "name": "Felipe Teste",
+      "email": "felipeleopoldino01@icloud.com",
+      "id": 2
+    },
+    {
+      "username": "user",
+      "password": "www",
+      "name": "Aline Santos",
+      "email": "felipeleopoldino01@icloud.com",
+      "id": 3
     }
   ],
   "article": [
@@ -14,6 +28,18 @@
       "article": "Projeto MVP do curso Analise e Desenvolvimento de sistema,\nUnifeso",
       "author": "Felipe Leopoldino",
       "id": 1
+    },
+    {
+      "title": "teste",
+      "article": "teste",
+      "author": "Felipe Teste",
+      "id": 2
+    },
+    {
+      "title": "Teste",
+      "article": "123456",
+      "author": "Felipe Teste",
+      "id": 3
     }
   ]
 }
